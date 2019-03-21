@@ -1,8 +1,11 @@
 'use strict';
 
+require('dotenv').config();
+
 process.env.STORAGE = 'mongo';
 
 const jwt = require('jsonwebtoken');
+
 
 const server = require('../../../src/app.js').server;
 const supergoose = require('../../supergoose.js');
@@ -35,7 +38,6 @@ describe('Auth Router', () => {
             id = token.id;
             encodedToken = results.text;
             expect(token.id).toBeDefined();
-            expect(token.capabilities).toBeDefined();
           });
       });
 
@@ -45,7 +47,6 @@ describe('Auth Router', () => {
           .then(results => {
             var token = jwt.verify(results.text, process.env.SECRET || 'changeit');
             expect(token.id).toEqual(id);
-            expect(token.capabilities).toBeDefined();
           });
       });
 
