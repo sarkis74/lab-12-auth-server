@@ -7,7 +7,9 @@
     "start": "node index.js",
     "watch": "nodemon index.js",
     "test-watch": "jest --watchAll",
-    "test": "jest"
+    "test": "bash  /usr/bin/runJest.sh",
+    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
+    "dbOff": "killall mongod"
   },
   "jest": {
     "testEnvironment": "node"
